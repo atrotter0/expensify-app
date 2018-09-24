@@ -1,0 +1,13 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+$brand-color: blue;
+
+* {
+  color: $brand-color;
+}
+
+.is-active {
+  font-weight: bold;
+}
