@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles/styles.scss';
 import ExpensifyApp from './components/ExpensifyApp';
 import registerServiceWorker from './registerServiceWorker';
@@ -29,7 +29,7 @@ const EditExpensePage = () => {
   );
 }
 
-const helpPage = () => {
+const HelpPage = () => {
   return(
     <div>
       <p>This is add expense component</p>
@@ -37,14 +37,23 @@ const helpPage = () => {
   );
 }
 
+const NotFoundPage = () => {
+  return(
+    <div>
+      <p>404!</p>
+    </div>
+  );
+}
+
 const routes = (
   <BrowserRouter>
-    <div>
+    <Switch>
       <Route path="/" component={ExpenseDashboardPage} exact={true} />
       <Route path="/create" component={AddExpensePage} />
       <Route path="/edit" component={EditExpensePage} />
-      <Route path="/help" component={helpPage} />
-    </div>
+      <Route path="/help" component={HelpPage} />
+      <Route component={NotFoundPage} />
+    </Switch>
   </BrowserRouter>
 );
 
