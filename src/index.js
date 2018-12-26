@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 import './styles/styles.scss';
 import ExpensifyApp from './components/ExpensifyApp';
-import registerServiceWorker from './registerServiceWorker';
 
 const ExpenseDashboardPage = () => {
   return(
@@ -76,4 +75,3 @@ ReactDOM.render(
   routes,
   document.getElementById('root')
 );
-registerServiceWorker();
