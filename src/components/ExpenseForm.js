@@ -11,6 +11,7 @@ export default class ExpenseForm extends React.Component {
     amount: '',
     createdAt: moment(),
     calendarFocused: false,
+    error: '',
   };
 
   onDescriptionChange = e => {
@@ -42,34 +43,65 @@ export default class ExpenseForm extends React.Component {
     this.setState(() => ({ calendarFocused: focused }));
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    const { description, amount, note, createdAt } = this.state;
+
+    if (!description || !amount) {
+      this.setState(() => ({
+        error: 'Please provide a description and amount.',
+      }));
+    } else {
+      this.setState(() => ({ error: '' }));
+      this.props.onSubmit({
+        description,
+        // Convert to pennies.
+        amount: parseFloat(amount, 10) * 100,
+        // Convert to milliseconds.
+        createdAt: createdAt.valueOf(),
+        note,
+      });
+    }
+  };
+
   render() {
+    const {
+      description,
+      amount,
+      note,
+      createdAt,
+      calendarFocused,
+      error,
+    } = this.state;
+
     return (
       <div>
-        <form>
+        {error && <p>{error}</p>}
+        <form onSubmit={this.onSubmit}>
           <input
             type="text"
             placeholder="Description"
             autoFocus
-            value={this.state.description}
+            value={description}
             onChange={this.onDescriptionChange}
           />
           <input
             type="text"
             placeholder="Amount"
-            value={this.state.amount}
+            value={amount}
             onChange={this.onAmountChange}
           />
           <SingleDatePicker
-            date={this.state.createdAt}
+            date={createdAt}
             onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
+            focused={calendarFocused}
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
             isOutsideRange={() => false}
           />
           <textarea
             placeholder="Add a note for your expense (optional)"
-            value={this.state.note}
+            value={note}
             onChange={this.onNoteChange}
           />
           <button>Add Expense</button>
