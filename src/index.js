@@ -9,8 +9,12 @@ import './styles/styles.scss';
 
 const store = configureStore();
 
-store.dispatch(addExpense({ description: 'Water bill', amount: 10000, createdAt: 4500 }));
-store.dispatch(addExpense({ description: 'Gas bill', amount: 6500, createdAt: 1000 }));
+store.dispatch(
+  addExpense({ description: 'Water bill', amount: 10000, createdAt: 4500 })
+);
+store.dispatch(
+  addExpense({ description: 'Gas bill', amount: 6500, createdAt: 1000 })
+);
 store.dispatch(addExpense({ description: 'Rent', amount: 109500 }));
 
 const jsx = (
@@ -19,7 +23,4 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(
-  jsx,
-  document.getElementById('root')
-);
+ReactDOM.render(jsx, document.getElementById('root'));

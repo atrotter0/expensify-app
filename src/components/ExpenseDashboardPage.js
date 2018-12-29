@@ -3,12 +3,12 @@ import ExpenseList from './ExpenseList';
 import ExpenseListFilters from './ExpenseListFilters';
 
 const ExpenseDashboardPage = () => {
-  return(
+  return (
     <div>
       <ExpenseListFilters />
       <ExpenseList />
     </div>
   );
-}
+};
 
 export default ExpenseDashboardPage;
