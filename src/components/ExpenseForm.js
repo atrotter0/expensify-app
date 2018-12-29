@@ -27,13 +27,15 @@ export default class ExpenseForm extends React.Component {
     const amount = e.target.value;
 
     // Only allow digits with an optional, single decimal, and only two digits after decimal.
-    if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({ amount }));
     }
   };
 
   onDateChange = createdAt => {
-    this.setState(() => ({ createdAt }));
+    if (createdAt) {
+      this.setState(() => ({ createdAt }));
+    }
   };
 
   onFocusChange = ({ focused }) => {
