@@ -7,7 +7,9 @@ import expenses from '../fixtures/expenses';
 let addExpense, history, wrapper;
 
 beforeEach(() => {
+  // Spy for addExpense call
   addExpense = jest.fn();
+  // Spy for history.push call
   history = { push: jest.fn() };
   wrapper = shallow(
     <AddExpensePage addExpense={addExpense} history={history} />
