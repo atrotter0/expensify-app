@@ -3,7 +3,7 @@ import React from 'react';
 const HelpPage = () => {
   return (
     <div>
-      <p>This the help component</p>
+      <p>This is the help component</p>
     </div>
   );
 };
